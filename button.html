@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="#">Button 1</a>
+    <a href="#">Button 2</a>
+    <a href="#">Button 3</a>
+    <script>
+        let btns = document.querySelectorAll('a');
+        btns.forEach((btn) => {
+            console.log(btn.clientHeight);
+            btn.addEventListener('click', (e) => {
+                let arr = ['1', '2', '3', '4', '5', '6', 'A', 'B', 'C', 'D', 'E', 'F'];
+                let str = "";
+                for (let i = 0; i < 6; i++) {
+                    var val = Math.floor(Math.random() * arr.length);
+                    str += arr[val];
+                }
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                let span = document.createElement('span');
+                span.style.left = x + 'px';
+                span.style.top = y + 'px';
+                span.style.opacity = `0.${val}`;
+                e.target.style.background = `linear-gradient(90deg, #${str}, #${str.split('').reverse().join('')})`;
+                e.target.appendChild(span);
+                setTimeout(function() {
+                    span.remove();
+                }, 1000);
+
+            });
+        });
+    </script>
+</body>
+
+</html>
